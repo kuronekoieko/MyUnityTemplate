@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+Unity CameraのcullingMaskについて
+http://shinriyo.hateblo.jp/entry/20130208/p3
+*/
 public class UICameraController : MonoBehaviour
 {
     [SerializeField] ParticleSystem confettiL;
@@ -9,12 +13,12 @@ public class UICameraController : MonoBehaviour
 
     void Start()
     {
-
+        Camera uiCam = GetComponent<Camera>();
+        uiCam.cullingMask |= 1 << LayerMask.NameToLayer("Confetti");
     }
 
     void Update()
     {
-        transform.position = Camera.main.transform.position;
     }
 
     public void PlayConfetti()
