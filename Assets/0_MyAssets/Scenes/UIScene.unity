@@ -1267,23 +1267,14 @@ GameObject:
   m_Component:
   - component: {fileID: 685837721709680627}
   - component: {fileID: 685837721709680626}
-  - component: {fileID: 685837721709680621}
   - component: {fileID: 685837721709680622}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: UICamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &685837721709680621
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 685837721709680620}
-  m_Enabled: 0
 --- !u!114 &685837721709680622
 MonoBehaviour:
   m_ObjectHideFlags: 0
