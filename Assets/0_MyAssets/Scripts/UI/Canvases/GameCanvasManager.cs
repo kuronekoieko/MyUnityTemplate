@@ -14,13 +14,11 @@ public class GameCanvasManager : BaseCanvasManager
 {
     [SerializeField] Text stageNumText;
 
-    public readonly ScreenState thisScreen = ScreenState.Game;
-
     public override void OnStart()
     {
 
 
-        base.SetScreenAction(thisScreen: thisScreen);
+        base.SetScreenAction(thisScreen: ScreenState.Game);
 
         this.ObserveEveryValueChanged(currentStageIndex => Variables.currentStageIndex)
             .Subscribe(currentStageIndex => { ShowStageNumText(); })
@@ -32,7 +30,7 @@ public class GameCanvasManager : BaseCanvasManager
 
     public override void OnUpdate()
     {
-        if (Variables.screenState != thisScreen) { return; }
+        if (!base.IsThisScreen()) { return; }
 
     }
 

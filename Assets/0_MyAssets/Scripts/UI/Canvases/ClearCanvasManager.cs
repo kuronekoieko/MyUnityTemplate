@@ -9,11 +9,10 @@ public class ClearCanvasManager : BaseCanvasManager
 {
     [SerializeField] Button nextButton;
     [SerializeField] UICameraController uICameraController;
-    public readonly ScreenState thisScreen = ScreenState.Clear;
 
     public override void OnStart()
     {
-        base.SetScreenAction(thisScreen: thisScreen);
+        base.SetScreenAction(thisScreen: ScreenState.Clear);
 
         nextButton.onClick.AddListener(OnClickNextButton);
         gameObject.SetActive(false);
@@ -21,7 +20,7 @@ public class ClearCanvasManager : BaseCanvasManager
 
     public override void OnUpdate()
     {
-        if (Variables.screenState != thisScreen) { return; }
+        if (!base.IsThisScreen()) { return; }
 
     }
 

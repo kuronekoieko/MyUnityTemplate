@@ -11,12 +11,16 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class BaseCanvasManager : MonoBehaviour
 {
+    ScreenState thisScreen;
+
     /// <summary>
     /// OnOpenとOnCloseのイベント発火タイミングを設定する
     /// </summary>
     /// <param name="thisScreen">セットする画面のenumを入れてください</param>
     protected void SetScreenAction(ScreenState thisScreen)
     {
+        this.thisScreen = thisScreen;
+
         this.ObserveEveryValueChanged(screenState => Variables.screenState)
             .Where(screenState => screenState == thisScreen)
             .Subscribe(screenState => { OnOpen(); })
@@ -59,16 +63,21 @@ public class BaseCanvasManager : MonoBehaviour
 
     protected void ToNextScene()
     {
+        if (!IsThisScreen()) { return; }
         Variables.currentStageIndex++;
         SceneManager.LoadScene("GameScene");
     }
 
     protected void ReLoadScene()
     {
+        if (!IsThisScreen()) { return; }
         SceneManager.LoadScene("GameScene");
     }
 
-
+    protected bool IsThisScreen()
+    {
+        return Variables.screenState == thisScreen;
+    }
 
     /*
         public readonly ScreenState thisScreen = ScreenState.

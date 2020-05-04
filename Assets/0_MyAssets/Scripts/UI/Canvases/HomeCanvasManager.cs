@@ -6,20 +6,18 @@ using UnityEngine.UI;
 public class HomeCanvasManager : BaseCanvasManager
 {
     [SerializeField] Button startButton;
-    public readonly ScreenState thisScreen = ScreenState.Home;
 
 
     public override void OnStart()
     {
-        base.SetScreenAction(thisScreen: thisScreen);
+        base.SetScreenAction(thisScreen: ScreenState.Home);
 
         startButton.onClick.AddListener(OnClickStartButton);
     }
 
     public override void OnUpdate()
     {
-        if (Variables.screenState != thisScreen) { return; }
-
+        if (!base.IsThisScreen()) { return; }
     }
 
     protected override void OnOpen()
