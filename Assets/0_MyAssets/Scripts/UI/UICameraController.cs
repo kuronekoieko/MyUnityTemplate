@@ -10,9 +10,11 @@ public class UICameraController : MonoBehaviour
 {
     [SerializeField] ParticleSystem confettiL;
     [SerializeField] ParticleSystem confettiR;
+    public static UICameraController i;
 
     void Start()
     {
+        if (i == null) i = this;
         Camera uiCam = GetComponent<Camera>();
         uiCam.cullingMask |= 1 << LayerMask.NameToLayer("Confetti");
     }

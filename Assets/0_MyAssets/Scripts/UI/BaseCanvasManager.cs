@@ -4,6 +4,17 @@ using UnityEngine;
 using UniRx;
 using UnityEngine.SceneManagement;
 
+public enum ScreenState
+{
+    Initialize,
+    Game,
+    Login,
+    Clear,
+    Failed,
+    Home,
+    Debug,
+}
+
 /// <summary>
 /// 画面のスクリプトに継承して使う
 /// UniRxでVariables.screenStateを監視し、

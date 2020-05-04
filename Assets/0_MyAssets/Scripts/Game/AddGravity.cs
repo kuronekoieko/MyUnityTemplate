@@ -15,6 +15,5 @@ public class AddGravity : MonoBehaviour
     void Update()
     {
         rb.AddForce(Vector3.down * downForce, ForceMode.Acceleration);
-
     }
 }

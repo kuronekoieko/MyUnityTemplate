@@ -9,7 +9,7 @@ public class SaveDataManager : MonoBehaviour
 
     void Awake()
     {
-        i = this;
+        if (i == null) i = this;
     }
 
     public void OnStart()

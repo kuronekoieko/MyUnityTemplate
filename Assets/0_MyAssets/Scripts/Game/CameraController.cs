@@ -9,25 +9,14 @@ using DG.Tweening;
 /// </summary>
 public class CameraController : MonoBehaviour
 {
-    bool isStart;
     public static CameraController i;
     void Start()
     {
-        i = this;
+        if (i == null) i = this;
     }
 
     void Update()
     {
 
-    }
-
-    public void Move(float distance)
-    {
-        if (isStart == false)
-        {
-            isStart = true;
-            return;
-        }
-        transform.DOLocalMoveZ(distance, 1).SetRelative();
     }
 }
