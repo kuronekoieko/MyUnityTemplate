@@ -18,7 +18,7 @@ public class GameCanvasManager : BaseCanvasManager
 
     public override void OnStart()
     {
-      
+
 
         base.SetScreenAction(thisScreen: thisScreen);
 

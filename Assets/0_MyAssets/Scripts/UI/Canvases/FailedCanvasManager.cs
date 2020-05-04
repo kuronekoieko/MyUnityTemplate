@@ -39,10 +39,12 @@ public class FailedCanvasManager : BaseCanvasManager
     void OnClickRestartButton()
     {
         base.ReLoadScene();
+        SoundManager.i.PlayOneShot(0);
     }
 
     void OnClickHomeButton()
     {
         Variables.screenState = ScreenState.Home;
+        SoundManager.i.PlayOneShot(0);
     }
 }

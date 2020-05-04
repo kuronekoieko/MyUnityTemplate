@@ -42,10 +42,12 @@ public class ClearCanvasManager : BaseCanvasManager
     void OnClickNextButton()
     {
         base.ToNextScene();
+        SoundManager.i.PlayOneShot(0);
     }
 
     void OnClickHomeButton()
     {
         Variables.screenState = ScreenState.Home;
+        SoundManager.i.PlayOneShot(0);
     }
 }
