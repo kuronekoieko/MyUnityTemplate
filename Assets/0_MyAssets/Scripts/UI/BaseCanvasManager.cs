@@ -34,14 +34,14 @@ public class BaseCanvasManager : MonoBehaviour
 
         this.ObserveEveryValueChanged(screenState => Variables.screenState)
             .Where(screenState => screenState == thisScreen)
-            .Subscribe(screenState => { OnOpen(); })
+            .Subscribe(screenState => OnOpen())
             .AddTo(this.gameObject);
 
         this.ObserveEveryValueChanged(screenState => Variables.screenState)
             .Buffer(2, 1)
             .Where(screenState => screenState[0] == thisScreen)
             .Where(screenState => screenState[1] != thisScreen)
-            .Subscribe(screenState => { OnClose(); })
+            .Subscribe(screenState => OnClose())
             .AddTo(this.gameObject);
     }
 

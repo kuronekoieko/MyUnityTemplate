@@ -8,5 +8,5 @@ using UnityEngine;
 public class Strings
 {
     public static readonly string KEY_SAVE_DATA = "save";
-
+    public static readonly string LAYER_CONFETTI = "Confetti";
 }
