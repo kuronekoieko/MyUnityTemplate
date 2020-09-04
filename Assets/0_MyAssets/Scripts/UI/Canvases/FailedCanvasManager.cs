@@ -31,6 +31,13 @@ public class FailedCanvasManager : BaseCanvasManager
         DOVirtual.DelayedCall(0f, () =>
         {
             gameObject.SetActive(true);
+            transform.localScale = Vector3.zero;
+            transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
+
+            Sequence retryButtonSequence = DOTween.Sequence()
+            .Append(restartButton.transform.DOScale(Vector3.one * 1.1f, 0.5f))
+            .Append(restartButton.transform.DOScale(Vector3.one, 0.5f));
+            retryButtonSequence.SetLoops(-1);
         });
     }
 
