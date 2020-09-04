@@ -8,12 +8,15 @@ using DG.Tweening;
 public class ClearCanvasManager : BaseCanvasManager
 {
     [SerializeField] Button nextButton;
+    [SerializeField] Button retryButton;
+    [SerializeField] Text titleText;
 
     public override void OnStart()
     {
         base.SetScreenAction(thisScreen: ScreenState.Clear);
 
         nextButton.onClick.AddListener(OnClickNextButton);
+        retryButton.onClick.AddListener(OnClickRetryButton);
         gameObject.SetActive(false);
     }
 
@@ -30,6 +33,10 @@ public class ClearCanvasManager : BaseCanvasManager
     protected override void OnOpen()
     {
         UICameraController.i.PlayConfetti();
+        bool isLastStage = Variables.currentSceneBuildIndex == Variables.lastSceneBuildIndex;
+        nextButton.gameObject.SetActive(!isLastStage);
+        retryButton.gameObject.SetActive(isLastStage);
+        if (isLastStage) titleText.text = "COMPLETE!";
         DOVirtual.DelayedCall(1.2f, () =>
         {
             gameObject.SetActive(true);
@@ -41,14 +48,17 @@ public class ClearCanvasManager : BaseCanvasManager
         gameObject.SetActive(false);
     }
 
-
-
     void OnClickNextButton()
     {
         base.ToNextScene();
         SoundManager.i.PlayOneShot(0);
     }
 
+    void OnClickRetryButton()
+    {
+        base.ReLoadScene();
+        SoundManager.i.PlayOneShot(0);
+    }
     void OnClickHomeButton()
     {
         Variables.screenState = ScreenState.Home;
