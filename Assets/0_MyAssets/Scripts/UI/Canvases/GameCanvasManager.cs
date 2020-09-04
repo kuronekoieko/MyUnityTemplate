@@ -12,7 +12,7 @@ using UniRx;
 /// </summary>
 public class GameCanvasManager : BaseCanvasManager
 {
-    [SerializeField] Text stageNumText;
+    [SerializeField] Text levelNumText;
 
     public override void OnStart()
     {
@@ -20,8 +20,8 @@ public class GameCanvasManager : BaseCanvasManager
 
         base.SetScreenAction(thisScreen: ScreenState.Game);
 
-        this.ObserveEveryValueChanged(currentStageIndex => Variables.currentStageIndex)
-            .Subscribe(currentStageIndex => { ShowStageNumText(); })
+        this.ObserveEveryValueChanged(currentSceneBuildIndex => Variables.currentSceneBuildIndex)
+            .Subscribe(currentSceneBuildIndex => { ShowStageNumText(levelNum: currentSceneBuildIndex); })
             .AddTo(this.gameObject);
 
         gameObject.SetActive(true);
@@ -44,8 +44,8 @@ public class GameCanvasManager : BaseCanvasManager
         // gameObject.SetActive(false);
     }
 
-    void ShowStageNumText()
+    void ShowStageNumText(int levelNum)
     {
-        stageNumText.text = "Stage " + (Variables.currentStageIndex + 1).ToString("000");
+        levelNumText.text = "LEVEL " + levelNum;
     }
 }

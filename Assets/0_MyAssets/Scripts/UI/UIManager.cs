@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UniRx;
 
 /// <summary>
 /// 画面UIの一括管理
@@ -9,77 +10,51 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] GameObject _gameDirector;
-    public static GameObject gameDirector;
-    BaseCanvasManager[] canvases;
-
-    //Awakeより先に呼ばれる
-    //シーンをリロードしても呼ばれない
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    public static void RuntimeInitializeApplication()
-    {
-        SceneManager.LoadScene("UIScene");
-    }
+    [SerializeField] Transform canvasesParentTf;
+    [SerializeField] ScreenState launchScreen;//起動時の画面
+    [SerializeField] ScreenState initializeScreen;//初期化後に開く画面
+    BaseCanvasManager[] baseCanvasManagers;
 
     void Awake()
     {
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 30;
-
-        if (gameDirector == null)
-        {
-            gameDirector = _gameDirector;
-            DontDestroyOnLoad(_gameDirector);
-        }
+        Application.targetFrameRate = 60;
+        DontDestroyOnLoad(gameObject);
+        baseCanvasManagers = canvasesParentTf.GetComponentsInChildren<BaseCanvasManager>(true);
     }
 
     void Start()
     {
-        canvases = new BaseCanvasManager[transform.childCount];
-        for (int i = 0; i < canvases.Length; i++)
-        {
-            canvases[i] = transform.GetChild(i).GetComponent<BaseCanvasManager>();
-            if (canvases[i] == null) { continue; }
-            canvases[i].OnStart();
-        }
-
+        SetCanvases();
+        Variables.currentSceneBuildIndex++;
+        SceneManager.LoadScene(Variables.currentSceneBuildIndex);
+        // イベントにイベントハンドラーを追加
         SceneManager.sceneLoaded += SceneLoaded;
-        SceneManager.LoadScene("GameScene");
+    }
+
+    void SetCanvases()
+    {
+        foreach (var baseCanvasManager in baseCanvasManagers)
+        {
+            baseCanvasManager.OnStart();
+        }
     }
 
     void Update()
     {
-        if (Variables.screenState == ScreenState.Initialize)
+        foreach (var baseCanvasManager in baseCanvasManagers)
         {
-            Initialize();
+            baseCanvasManager.OnUpdate();
         }
-        else
-        {
-            OnUpdate();
-        }
-    }
-    void OnUpdate()
-    {
-        for (int i = 0; i < canvases.Length; i++)
-        {
-            if (canvases[i] == null) { continue; }
-            canvases[i].OnUpdate();
-        }
-    }
-
-    void Initialize()
-    {
-        for (int i = 0; i < canvases.Length; i++)
-        {
-            if (canvases[i] == null) { continue; }
-            canvases[i].OnInitialize();
-        }
-        Variables.screenState = ScreenState.Game;
     }
 
     // イベントハンドラー（イベント発生時に動かしたい処理）
     void SceneLoaded(Scene nextScene, LoadSceneMode mode)
     {
-        Variables.screenState = ScreenState.Initialize;
+        foreach (var baseCanvasManager in baseCanvasManagers)
+        {
+            baseCanvasManager.OnInitialize();
+        }
+        Variables.screenState = initializeScreen;
     }
 }

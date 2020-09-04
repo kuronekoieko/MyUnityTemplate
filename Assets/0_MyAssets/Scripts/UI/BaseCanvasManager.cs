@@ -6,13 +6,11 @@ using UnityEngine.SceneManagement;
 
 public enum ScreenState
 {
-    Initialize,
-    Game,
-    Login,
-    Clear,
-    Failed,
-    Home,
-    Debug,
+    Game = 0,
+    Clear = 1,
+    Failed = 2,
+    Login = 3,
+    Home = 4,
 }
 
 /// <summary>
@@ -75,14 +73,14 @@ public class BaseCanvasManager : MonoBehaviour
     protected void ToNextScene()
     {
         if (!IsThisScreen()) { return; }
-        Variables.currentStageIndex++;
-        SceneManager.LoadScene("GameScene");
+        Variables.currentSceneBuildIndex++;
+        SceneManager.LoadScene(Variables.currentSceneBuildIndex);
     }
 
     protected void ReLoadScene()
     {
         if (!IsThisScreen()) { return; }
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(Variables.currentSceneBuildIndex);
     }
 
     protected bool IsThisScreen()
