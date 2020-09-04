@@ -6,20 +6,14 @@ using UnityEditor.iOS.Xcode;
 using System.IO;
 using System;
 using UnityEditor.Build;
+using UnityEditor.Build.Reporting;
 
-public class MyBuildPostprocessor : IPreprocessBuild
+public class MyBuildPostprocessor : IPreprocessBuildWithReport
 {
     // 実行順
     public int callbackOrder { get { return 0; } }
 
-
-    // ビルド前処理
-    public void OnPreprocessBuild(BuildTarget target, string path)
-    {
-    }
-
-    [PostProcessBuildAttribute(1)]
-    public static void OnPostprocessBuild(BuildTarget target, string pathToBuiltProject)
+    public void OnPreprocessBuild(BuildReport report)
     {
     }
 
@@ -31,7 +25,9 @@ public class MyBuildPostprocessor : IPreprocessBuild
         PBXProject pbxProject = new PBXProject();
         pbxProject.ReadFromFile(projectPath);
 
-        string target = pbxProject.TargetGuidByName("Unity-iPhone");
+        //Exception: Calling TargetGuidByName with name='Unity-iPhone' is deprecated.【解決策】
+        //https://koujiro.hatenablog.com/entry/2020/03/16/050848
+        string target = pbxProject.GetUnityMainTargetGuid();
 
 
         //pbxProject.AddCapability(target, PBXCapabilityType.InAppPurchase);
@@ -57,24 +53,12 @@ public class MyBuildPostprocessor : IPreprocessBuild
         //ipa名
         string buildMode = Debug.isDebugBuild ? "debug" : "release";
         string name = $"{Application.productName}_{buildMode}_ver{Application.version}_{dateName}_{timeName}";
-        Debug.Log($"~~~~~~~~~~~~~~~\n{name}\n~~~~~~~~~~~~~~~");
-
-        //tenjinの計測フレームワーク
-        //https://github.com/tenjin/tenjin-ios-sdk
-        string[] fileNames = {
-            "AdSupport.framework",
-            "StoreKit.framework",
-            "iAd.framework"
-        };
-
-        foreach (var fileName in fileNames)
-        {
-            pbxProject.AddFrameworkToProject(target, fileName, false);
-        }
+        // Debug.Log($"~~~~~~~~~~~~~~~\n{name}\n~~~~~~~~~~~~~~~");
 
         plist.WriteToFile(plistPath);
         pbxProject.WriteToFile(projectPath);
     }
+
 
 }
 #endif
