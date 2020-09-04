@@ -11,16 +11,9 @@ public class UICameraController : MonoBehaviour
     [SerializeField] ParticleSystem confettiL;
     [SerializeField] ParticleSystem confettiR;
     public static UICameraController i;
-
-    void Start()
+    private void Awake()
     {
-        if (i == null) i = this;
-        Camera uiCam = GetComponent<Camera>();
-        uiCam.cullingMask |= 1 << LayerMask.NameToLayer(Strings.LAYER_CONFETTI);
-    }
-
-    void Update()
-    {
+        i = this;
     }
 
     public void PlayConfetti()
