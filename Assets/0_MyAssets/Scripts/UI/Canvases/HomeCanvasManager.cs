@@ -15,9 +15,13 @@ public class HomeCanvasManager : BaseCanvasManager
         startButton.onClick.AddListener(OnClickStartButton);
     }
 
+    public override void OnInitialize()
+    {
+    }
+
     public override void OnUpdate()
     {
-        if (!base.IsThisScreen()) { return; }
+        if (!base.IsThisScreen) { return; }
     }
 
     protected override void OnOpen()

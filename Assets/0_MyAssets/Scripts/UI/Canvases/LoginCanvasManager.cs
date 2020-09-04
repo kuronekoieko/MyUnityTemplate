@@ -34,6 +34,10 @@ public class LoginCanvasManager : BaseCanvasManager
         coinGetAnim.OnStart();
     }
 
+    public override void OnInitialize()
+    {
+    }
+
     void BonusCountTextsGenerator()
     {
         bonusCountTexts = new Text[coinCounts.Length];
@@ -55,7 +59,7 @@ public class LoginCanvasManager : BaseCanvasManager
 
     public override void OnUpdate()
     {
-        if (!base.IsThisScreen()) { return; }
+        if (!base.IsThisScreen) { return; }
     }
 
     protected override void OnOpen()

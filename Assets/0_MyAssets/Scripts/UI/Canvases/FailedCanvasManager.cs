@@ -16,9 +16,13 @@ public class FailedCanvasManager : BaseCanvasManager
         gameObject.SetActive(false);
     }
 
+    public override void OnInitialize()
+    {
+    }
+
     public override void OnUpdate()
     {
-        if (!base.IsThisScreen()) { return; }
+        if (!base.IsThisScreen) { return; }
 
     }
 

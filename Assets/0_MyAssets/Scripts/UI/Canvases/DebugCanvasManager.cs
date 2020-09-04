@@ -31,7 +31,13 @@ public class DebugCanvasManager : BaseCanvasManager
         restartButton.onClick.AddListener(() => base.ReLoadScene());
     }
 
+    public override void OnInitialize()
+    {
+    }
 
+    public override void OnUpdate()
+    {
+    }
 
     protected override void OnOpen()
     {

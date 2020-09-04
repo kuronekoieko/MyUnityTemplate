@@ -8,9 +8,9 @@ public class Variables : MonoBehaviour
     public static ScreenState screenState = ScreenState.Game;
     public static int currentSceneBuildIndex
     {
-        set { _currentSceneBuildIndex = Mathf.Clamp(value, 1, SceneManager.sceneCountInBuildSettings - 1); }
+        set { _currentSceneBuildIndex = Mathf.Clamp(value, 1, lastSceneBuildIndex); }
         get { return _currentSceneBuildIndex; }
     }
     private static int _currentSceneBuildIndex;
-    public static int lastStageIndex;
+    public static int lastSceneBuildIndex => SceneManager.sceneCountInBuildSettings - 1;
 }

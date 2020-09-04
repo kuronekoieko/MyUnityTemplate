@@ -17,9 +17,13 @@ public class ClearCanvasManager : BaseCanvasManager
         gameObject.SetActive(false);
     }
 
+    public override void OnInitialize()
+    {
+    }
+
     public override void OnUpdate()
     {
-        if (!base.IsThisScreen()) { return; }
+        if (!base.IsThisScreen) { return; }
 
     }
 
@@ -36,6 +40,8 @@ public class ClearCanvasManager : BaseCanvasManager
     {
         gameObject.SetActive(false);
     }
+
+
 
     void OnClickNextButton()
     {

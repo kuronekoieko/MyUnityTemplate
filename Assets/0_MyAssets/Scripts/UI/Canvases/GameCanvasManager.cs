@@ -16,8 +16,6 @@ public class GameCanvasManager : BaseCanvasManager
 
     public override void OnStart()
     {
-
-
         base.SetScreenAction(thisScreen: ScreenState.Game);
 
         this.ObserveEveryValueChanged(currentSceneBuildIndex => Variables.currentSceneBuildIndex)
@@ -25,12 +23,15 @@ public class GameCanvasManager : BaseCanvasManager
             .AddTo(this.gameObject);
 
         gameObject.SetActive(true);
+    }
 
+    public override void OnInitialize()
+    {
     }
 
     public override void OnUpdate()
     {
-        if (!base.IsThisScreen()) { return; }
+        if (!base.IsThisScreen) { return; }
 
     }
 
@@ -41,7 +42,6 @@ public class GameCanvasManager : BaseCanvasManager
 
     protected override void OnClose()
     {
-        // gameObject.SetActive(false);
     }
 
     void ShowStageNumText(int levelNum)

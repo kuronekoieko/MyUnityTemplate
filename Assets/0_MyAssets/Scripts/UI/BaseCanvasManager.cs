@@ -13,12 +13,7 @@ public enum ScreenState
     Home = 4,
 }
 
-/// <summary>
-/// 画面のスクリプトに継承して使う
-/// UniRxでVariables.screenStateを監視し、
-/// 画面の開閉処理をやってくれる
-/// </summary>
-public class BaseCanvasManager : MonoBehaviour
+public abstract class BaseCanvasManager : MonoBehaviour
 {
     ScreenState thisScreen;
 
@@ -43,50 +38,30 @@ public class BaseCanvasManager : MonoBehaviour
             .AddTo(this.gameObject);
     }
 
-    public virtual void OnStart()
-    {
-    }
+    public abstract void OnStart();
 
-    public virtual void OnUpdate()
-    {
-    }
+    public abstract void OnUpdate();
 
-    /// <summary>
-    /// 画面が開かれる瞬間だけ呼ばれる
-    /// </summary>
-    protected virtual void OnOpen()
-    {
-    }
+    protected abstract void OnOpen();
 
-    /// <summary>
-    /// 画面が閉じられる瞬間だけ呼ばれる
-    /// </summary>
-    protected virtual void OnClose()
-    {
-    }
+    protected abstract void OnClose();
 
-    public void OnInitialize()
-    {
-
-    }
+    public abstract void OnInitialize();
 
     protected void ToNextScene()
     {
-        if (!IsThisScreen()) { return; }
+        if (!IsThisScreen) { return; }
         Variables.currentSceneBuildIndex++;
         SceneManager.LoadScene(Variables.currentSceneBuildIndex);
     }
 
     protected void ReLoadScene()
     {
-        if (!IsThisScreen()) { return; }
+        if (!IsThisScreen) { return; }
         SceneManager.LoadScene(Variables.currentSceneBuildIndex);
     }
 
-    protected bool IsThisScreen()
-    {
-        return Variables.screenState == thisScreen;
-    }
+    protected bool IsThisScreen => Variables.screenState == thisScreen;
 
     /*
         public readonly ScreenState thisScreen = ScreenState.
