@@ -1400,7 +1400,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1073902172421878, guid: 211df3921ba166e4d97f049834dc5490, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1073902172421878, guid: 211df3921ba166e4d97f049834dc5490, type: 3}
       propertyPath: m_Layer
@@ -1479,9 +1479,29 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198021138395455058, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198021138395455058, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198113212998299206, guid: 211df3921ba166e4d97f049834dc5490,
         type: 3}
       propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198113212998299206, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198113212998299206, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: CollisionModule.enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198617934630346986, guid: 211df3921ba166e4d97f049834dc5490,
@@ -1494,14 +1514,44 @@ PrefabInstance:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 198617934630346986, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198617934630346986, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198701170200341874, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198701170200341874, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198701170200341874, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198864699464327180, guid: 211df3921ba166e4d97f049834dc5490,
         type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198864699464327180, guid: 211df3921ba166e4d97f049834dc5490,
         type: 3}
-      propertyPath: playOnAwake
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198864699464327180, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: CollisionModule.enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1515,7 +1565,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1073902172421878, guid: 211df3921ba166e4d97f049834dc5490, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1073902172421878, guid: 211df3921ba166e4d97f049834dc5490, type: 3}
       propertyPath: m_Layer
@@ -1606,9 +1656,29 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198021138395455058, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198021138395455058, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198113212998299206, guid: 211df3921ba166e4d97f049834dc5490,
         type: 3}
       propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198113212998299206, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198113212998299206, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: CollisionModule.enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198617934630346986, guid: 211df3921ba166e4d97f049834dc5490,
@@ -1621,14 +1691,44 @@ PrefabInstance:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 198617934630346986, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198617934630346986, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198701170200341874, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198701170200341874, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198701170200341874, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198864699464327180, guid: 211df3921ba166e4d97f049834dc5490,
         type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198864699464327180, guid: 211df3921ba166e4d97f049834dc5490,
         type: 3}
-      propertyPath: playOnAwake
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198864699464327180, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: CollisionModule.enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
