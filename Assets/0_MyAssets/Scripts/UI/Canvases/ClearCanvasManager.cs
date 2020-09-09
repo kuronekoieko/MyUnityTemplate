@@ -10,6 +10,8 @@ public class ClearCanvasManager : BaseCanvasManager
     [SerializeField] Button nextButton;
     [SerializeField] Button retryButton;
     [SerializeField] Text titleText;
+    Sequence nextButtonSequence;
+    Sequence retryButtonSequence;
 
     public override void OnStart()
     {
@@ -37,18 +39,21 @@ public class ClearCanvasManager : BaseCanvasManager
         nextButton.gameObject.SetActive(!isLastStage);
         retryButton.gameObject.SetActive(isLastStage);
         if (isLastStage) titleText.text = "COMPLETE!";
+
         DOVirtual.DelayedCall(1.2f, () =>
         {
             gameObject.SetActive(true);
             transform.localScale = Vector3.zero;
             transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
 
-            Sequence retryButtonSequence = DOTween.Sequence()
+            retryButton.transform.localScale = Vector3.one;
+            retryButtonSequence = DOTween.Sequence()
             .Append(retryButton.transform.DOScale(Vector3.one * 1.1f, 0.5f))
             .Append(retryButton.transform.DOScale(Vector3.one, 0.5f));
             retryButtonSequence.SetLoops(-1);
 
-            Sequence nextButtonSequence = DOTween.Sequence()
+            nextButton.transform.localScale = Vector3.one;
+            nextButtonSequence = DOTween.Sequence()
             .Append(nextButton.transform.DOScale(Vector3.one * 1.1f, 0.5f))
             .Append(nextButton.transform.DOScale(Vector3.one, 0.5f));
             nextButtonSequence.SetLoops(-1);
@@ -58,6 +63,8 @@ public class ClearCanvasManager : BaseCanvasManager
     protected override void OnClose()
     {
         gameObject.SetActive(false);
+        nextButtonSequence.Kill();
+        retryButtonSequence.Kill();
     }
 
     void OnClickNextButton()
