@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// スクリーンショットをキャプチャするサンプル
+/// </summary>
 public class ScreenShotCapturer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
+        // スペースキーが押されたら
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // スクリーンショットを保存
+            CaptureScreenShot("Assets/ScreenShot.png");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    // 画面全体のスクリーンショットを保存する
+    private void CaptureScreenShot(string filePath)
     {
-        
+        ScreenCapture.CaptureScreenshot(filePath);
+        Debug.Log("スクショ保存 " + filePath);
     }
 }
