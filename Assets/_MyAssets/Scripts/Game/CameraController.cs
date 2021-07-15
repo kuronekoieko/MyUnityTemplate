@@ -10,13 +10,10 @@ using DG.Tweening;
 public class CameraController : MonoBehaviour
 {
     public static CameraController i;
-    void Start()
+
+    private void Awake()
     {
-        if (i == null) i = this;
+        i = this;
     }
 
-    void Update()
-    {
-
-    }
 }
