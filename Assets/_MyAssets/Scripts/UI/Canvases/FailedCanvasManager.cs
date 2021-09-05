@@ -8,6 +8,7 @@ using DG.Tweening;
 public class FailedCanvasManager : BaseCanvasManager
 {
     [SerializeField] Button restartButton;
+    [SerializeField] Image emojiImage;
     Sequence retryButtonSequence;
 
     public override void OnStart()
@@ -40,6 +41,9 @@ public class FailedCanvasManager : BaseCanvasManager
             .Append(restartButton.transform.DOScale(Vector3.one * 1.1f, 0.5f))
             .Append(restartButton.transform.DOScale(Vector3.one, 0.5f));
             retryButtonSequence.SetLoops(-1);
+
+            emojiImage.transform.localScale = Vector3.one;
+            emojiImage.transform.DOScale(Vector3.one * 1.1f, 1.5f).SetEase(Ease.InOutFlash, 4).SetLoops(-1);
         });
     }
 
