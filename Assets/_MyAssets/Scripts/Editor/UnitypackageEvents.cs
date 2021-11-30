@@ -54,7 +54,8 @@ public class UnitypackageEvents
         // 64bit対応
         PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
         PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
-        PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel30;
+        PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel21;
+        PlayerSettings.Android.targetSdkVersion = AndroidSdkVersions.AndroidApiLevel30;
         PlayerSettings.Android.bundleVersionCode = 1;
 
         // 変更の自動保存
